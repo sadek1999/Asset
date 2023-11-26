@@ -7,8 +7,9 @@ const Navbar = () => {
 
     const link = <>
         <li><NavLink to={"/"}>Home</NavLink></li>
-        <li><NavLink to={"/empoloyee"}>Join As Employee</NavLink></li>
+        <li><NavLink to={"/employee"}>Join As Employee</NavLink></li>
         <li><NavLink to={"/hr"}>Join As HR</NavLink></li>
+        <li><NavLink to={"/login"}>Login</NavLink></li>
     </>
 
 
@@ -29,7 +30,7 @@ const Navbar = () => {
 
     return (
         <nav>
-            <div className="navbar bg-base-100">
+            <div className="navbar fixed z-10 bg-black bg-opacity-30 max-w-screen-xl text-white">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -39,7 +40,9 @@ const Navbar = () => {
                             {link}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
+                    <div>
+                        <img className="w-20 h-10" src="https://thumbs.dreamstime.com/z/economics-financial-development-rn-vector-icon-which-can-easily-modify-edit-157739827.jpg?w=768" alt="" />
+                    </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
