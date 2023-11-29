@@ -7,9 +7,10 @@ const Navbar = () => {
 
     const link = <>
         <li><NavLink to={"/"}>Home</NavLink></li>
-        <li><NavLink to={"/employee"}>Join As Employee</NavLink></li>
-        <li><NavLink to={"/hr"}>Join As HR</NavLink></li>
+        <li><NavLink to={"/employeesingup"}>Join As Employee</NavLink></li>
+        <li><NavLink to={"/hrsingup"}>Join As HR</NavLink></li>
         <li><NavLink to={"/login"}>Login</NavLink></li>
+        <li><NavLink to={"/hr/home"}>hr</NavLink></li>
     </>
 
 
