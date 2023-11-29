@@ -1,11 +1,15 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAxiosPublc from "../../../hooks/axiosPublic/useAxiosPublc";
+
+import UserAuth from "../../../hooks/UserAuth/UserAuth";
 
 
 
 const Hr = () => {
+    const {singup}=UserAuth()
     const axiospublic=useAxiosPublc()
+    const navigate=useNavigate()
 
    
 
@@ -17,10 +21,29 @@ const Hr = () => {
     } = useForm()
 
     const onSubmit = (data) => {
+        const info={
+            name:data.name,
+            email:data.email,
+            photo:data.photo,
+            company:data.companyname,
+            plan:data.plan,
+            barthDay:data.dateofBarth,
+            
 
-        console.log(data)
-        axiospublic.post('/user',data)
+        }
+        
+       singup(data.email,data.password)
+       .then(res=>{
+       if(res){
+
+        axiospublic.post('/user',info)
         .then(res=>{console.log(res.data)})
+        navigate('/hr')
+       }
+       })
+        
+       
+       
     }
     return (
         <div className=" pt-20">

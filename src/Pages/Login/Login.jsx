@@ -1,9 +1,12 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import Google from "../../Components/Button/Google";
+import UserAuth from "../../hooks/UserAuth/UserAuth";
 
 
 const Login = () => {
+
+    const {login}=UserAuth()
     const {
         register,
         handleSubmit,
@@ -11,7 +14,13 @@ const Login = () => {
         formState: { errors },
     } = useForm()
     const onSubmit = (data) =>{ 
-        console.log(data)}
+        console.log(data)
+        login(data.email,data.password)
+        .then(res=>{
+            console.log(res)
+        })
+    
+    }
 
    
     return (

@@ -1,6 +1,6 @@
 
 
-const AssetList = () => {
+const MyEmaployee = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const AssetList = () => {
     );
 };
 
-export default AssetList;
+export default MyEmaployee;
