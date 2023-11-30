@@ -15,10 +15,15 @@ const axiospublic=useAxiosPublc()
         console.log(data)
         const userinfo = {
             name: data.name,
-            email: data.email
+            email: data.email,
+            photo:data.photo,
+            company:data.company,
+            role:'employee',
+            hr:'',
+            haired:false,
         }
     
-    axiospublic.post("/user",userinfo)
+    axiospublic.post("/employee",userinfo)
     .then(res=>{
         console.log(res.data)
     })

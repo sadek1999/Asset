@@ -2,11 +2,20 @@ import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import UserAuth from "../../../hooks/UserAuth/UserAuth";
 import Swal from "sweetalert2";
+import UseProfile from "../../../hooks/Userinfo/UseProfile";
 
 
 const Hrnavbar = () => {
-    const [theme, settheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light')
+
     const { user ,logout} = UserAuth();
+    const [info]=UseProfile()
+   
+
+
+
+
+    const [theme, settheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light')
+   
     const link = <>
         <li><NavLink to={"/"}>Home</NavLink></li>
 
@@ -86,20 +95,20 @@ const Hrnavbar = () => {
                     <div>
                         <div className="mr-2">
                             {
-                                user?.email ? <div className="dropdown dropdown-end">
+                                user?.email ? <div className="dropdown  dropdown-end">
                                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                         <div className="w-10 rounded-full">
-                                            <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                            {
+                                                info[0]?.photo? <img alt="Tailwind CSS Navbar component" src={info[0].photo} />: <img alt="Tailwind CSS Navbar component" src="" />
+                                            }
+                                            
                                         </div>
                                     </div>
-                                    <ul className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                    <ul className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 text-blue-300 rounded-box w-52">
                                         <li>
-                                            <a className="justify-between">
-                                                Profile
-                                                <span className="badge">New</span>
-                                            </a>
+                                            {info[0]?.name}
                                         </li>
-                                        <li><a>Settings</a></li>
+                                        <li>{info[0]?.email}</li>
                                         <li> <button onClick={handllogout}>Log out</button></li>
                                     </ul>
                                 </div> :
@@ -108,7 +117,7 @@ const Hrnavbar = () => {
                             }
                         </div>
                     </div>
-                    <a className="btn">Button</a>
+                    
                 </div>
             </div>
         </nav>

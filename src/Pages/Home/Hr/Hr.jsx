@@ -21,13 +21,24 @@ const Hr = () => {
     } = useForm()
 
     const onSubmit = (data) => {
+        let employee=null;
+        if(data.plan==1){
+           employee=5;
+        }
+        if(data.plan==2){
+           employee=10;
+        }
+        if(data.plan==3){
+           employee=15;
+        }
         const info={
             name:data.name,
             email:data.email,
             photo:data.photo,
             company:data.companyname,
-            plan:data.plan,
+            employee:employee,
             barthDay:data.dateofBarth,
+            role:'hr'
             
 
         }
@@ -143,9 +154,9 @@ const Hr = () => {
                             </label>
                            
                             <select className="p-3 rounded-md" {...register("plan")}>
-                                <option value="plan-1">Plan-1</option>
-                                <option value="plan-2">Plan-2</option>
-                                <option value="plan-3">Plan-3</option>
+                                <option value="1">Plan-1</option>
+                                <option value="2">Plan-2</option>
+                                <option value="3">Plan-3</option>
                             </select> 
                         </div>
                     </div>

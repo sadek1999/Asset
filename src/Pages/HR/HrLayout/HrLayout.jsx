@@ -7,7 +7,7 @@ const HrLayout = () => {
     return (
         <div>
             <Hrnavbar></Hrnavbar>
-            <div className="pt-10 flex">
+            <div className="pt-20 flex">
                 {/* <div className="w-72 ">
                     <Navegaiton></Navegaiton>
                 </div> */}
