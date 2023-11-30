@@ -3,8 +3,8 @@
 const Pakages = () => {
     return (
         <div>
-            <h1 className='text-4xl'>this is the pakages pages </h1>
-            <div className=" flex   flex-col md:flex-row gap-5">
+            
+            <div className=" flex mt-7  flex-col md:flex-row gap-5">
                 {/* Plan-1 */}
                 <div className=" rounded-md w-full text-center space-y-2 bg-blue-400 shadow-xl text-white">
 

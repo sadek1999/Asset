@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import useAxiosPublc from "../../../hooks/axiosPublic/useAxiosPublc";
+import Swal from "sweetalert2";
 
 
 
@@ -20,12 +21,20 @@ const axiospublic=useAxiosPublc()
             company:data.company,
             role:'employee',
             hr:'',
-            haired:false,
+            haired:"false",
         }
     
     axiospublic.post("/employee",userinfo)
     .then(res=>{
         console.log(res.data)
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Successfully join as Employee",
+            showConfirmButton: false,
+            timer: 1000
+          });
+          data.reset()
     })
     
     }

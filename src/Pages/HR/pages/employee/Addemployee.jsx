@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import useAxiosSequre from "../../../../hooks/axiosPublic/useAxiosSequre";
 import UseProfile from "../../../../hooks/Userinfo/UseProfile";
-import Empollytabil from "../../../../Components/Tabils/Empollytabil";
+
 import UseAllemp from "../../../../hooks/AllEmployee/UseAllemp";
 import Swal from "sweetalert2";
-import { MdRememberMe } from "react-icons/md";
+
+import { FaUsersLine } from "react-icons/fa6";
+
 
 
 const Addemployee = () => {
@@ -12,9 +14,12 @@ const Addemployee = () => {
     // 
 
     const [info] = UseProfile()
-    const [employees,refetch] = UseAllemp()
     
+    const [employees,refetch] = UseAllemp()
 
+    
+    
+   
 
     const axiosSequre = useAxiosSequre()
 
@@ -50,8 +55,8 @@ const Addemployee = () => {
             
         })
     }
-    console.log(employees)
-    console.log(employees?.haired )
+    // console.log(employees)
+    // console.log(employees[0]?.haired )
 
 
     return (
@@ -109,10 +114,10 @@ const Addemployee = () => {
 
                                         <span className="badge badge-ghost badge-sm">{employee.email}</span>
                                     </td>
-                                    <td>{employee?.haired && <MdRememberMe />}</td>
+                                    <td><FaUsersLine /></td>
                                     <th>
-                                        <p>{employee?.haired}</p>
-                                        {employee?.haired?<p>Haired</p>:
+                                       
+                                        {employee?.haired==="true"?<p>Haired</p>:
                                         <button onClick={() => { handalAdd(employee._id) }} className="btn btn-ghost btn-xs">Add Team</button>
 
                                         }

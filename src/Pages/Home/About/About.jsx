@@ -2,10 +2,11 @@
 
 const About = () => {
     return (
-        <div>
-          <img src="https://cnam.ca/wp-content/uploads/2021/07/policy-am101.jpg" alt="" />
+        <div className=" bg-blue-200 text-center space-y-3 py-20">
+         
+          <h1 className="text-4xl font-bold"> -------About Us------------</h1>
           
-          <p>At [Your Company Name], we are driven by a commitment to financial empowerment. With a legacy of expertise, we navigate the complexities of asset management, empowering you to achieve lasting prosperity</p> 
+          <p className="text-2xl">At N.A, we are driven by a commitment to financial empowerment. With a legacy of expertise, we navigate the complexities of asset management, empowering you to achieve lasting prosperity</p> 
         </div>
     );
 };

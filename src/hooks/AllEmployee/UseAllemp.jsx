@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import UserAuth from "../UserAuth/UserAuth";
+
 import useAxiosSequre from "../axiosPublic/useAxiosSequre";
-import UseProfile from "../Userinfo/UseProfile";
+
 
 
 const UseAllemp = () => {
   
-    const {user}=UserAuth()
+   
     const axiosSecure=useAxiosSequre()
     
     
