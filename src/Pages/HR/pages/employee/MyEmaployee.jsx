@@ -4,11 +4,13 @@ import { FaUsersLine } from "react-icons/fa6";
 import useAxiosSequre from "../../../../hooks/axiosPublic/useAxiosSequre";
 
 
+
 const MyEmaployee = () => {
     const [refetch, team] = UseTeam()
+   
     const axiosSecure=useAxiosSequre()
    
-   
+//    const hr=info[0.].email
 
     const handlremove=(id)=>{
         // e.preventDefault()

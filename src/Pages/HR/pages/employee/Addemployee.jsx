@@ -6,6 +6,7 @@ import UseAllemp from "../../../../hooks/AllEmployee/UseAllemp";
 import Swal from "sweetalert2";
 
 import { FaUsersLine } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 
 
@@ -17,9 +18,14 @@ const Addemployee = () => {
     
     const [employees,refetch] = UseAllemp()
 
+    const team=employees?.filter(obj=>obj.haired==="true")
+let limit= info[0]?.employee-team?.length
+
+
+const hr=info[0]?.email
+// console.log(info)
     
-    
-   
+//    console.log(team)
 
     const axiosSequre = useAxiosSequre()
 
@@ -39,21 +45,32 @@ const Addemployee = () => {
     }
     const handalAdd = (id) => {
         console.log(id)
-        axiosSequre.patch(`/employee/${id}`)
-        .then(res=>{
-            if(res){
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Your work has been saved",
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-                  axiosSequre.patch("")
-                  refetch()
-            }
-            
-        })
+        if(limit<=0){
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Your limit is over!",
+                footer: '<a href="#">Increase you limit </a>'
+              });
+        }
+        else {
+            axiosSequre.patch(`/employee/${id}`,{hr})
+            .then(res=>{
+                if(res){
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Your work has been saved",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                      axiosSequre.patch("")
+                      refetch()
+                }
+                
+            })
+        }
+        
     }
     // console.log(employees)
     // console.log(employees[0]?.haired )
@@ -64,10 +81,11 @@ const Addemployee = () => {
 
             <div className="card w-96 bg-base-100 text-center shadow-xl">
                 <div className="card-body">
-                    <h2 className="text-2xl">Pakage Limit : <span className="text-red-400 font-bold">{info[0]?.employee}</span> person </h2>
+                    <h2 className="text-2xl">Pakage Limit : <span className="text-red-400 font-bold">{limit}</span> person </h2>
                     <p>Total products :{totalQuantity}</p>
                     <div className="card-actions justify-center">
-                        <button className="btn btn-outline btn-info">increase limit</button>
+                        <Link  className="btn btn-outline btn-info">increase limit</Link>
+                       
                     </div>
                 </div>
             </div>
@@ -112,7 +130,7 @@ const Addemployee = () => {
                                     </td>
                                     <td>
 
-                                        <span className="badge badge-ghost badge-sm">{employee.email}</span>
+                                        <span className="">{employee.email}</span>
                                     </td>
                                     <td><FaUsersLine /></td>
                                     <th>
