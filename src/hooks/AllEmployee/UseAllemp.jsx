@@ -12,11 +12,12 @@ const UseAllemp = () => {
     
 //     const c=info[0]?.company;
 //     // console.log(info)
+ const a='employee'
 
    const {refetch,data :employees=[]}=useQuery({
     queryKey: ['employee'],
     queryFn:async()=>{
-        const res=await axiosSecure.get('/employee')
+        const res=await axiosSecure.get(`/employee?role=${a}`)
         // const res= await axiosSecure.get(`/employee`)
        
         return res.data;

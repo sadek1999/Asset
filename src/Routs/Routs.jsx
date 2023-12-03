@@ -18,6 +18,8 @@ import Addemployee from "../Pages/HR/pages/employee/Addemployee";
 import Custom from "../Pages/HR/pages/AssetList/Allasset/Custom";
 import Emlayout from "../Pages/Empolyee/emlayout/Emlayout";
 import EmHome from "../Pages/Empolyee/emhome/Home/EmHome";
+import AssetReq from "../Pages/Empolyee/page/AssetRe/AssetReq";
+import CastomAsset from "../Pages/Empolyee/page/AssetRe/CastomAsset";
 
 
 const router = createBrowserRouter([
@@ -73,12 +75,21 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: '/empolyee',
+    path: '/employee',
     element: <Emlayout></Emlayout>,
     children: [
            {
             path:'home',
             element:<EmHome></EmHome>
+           },
+           {
+            path:'reqasset',
+            element:<AssetReq></AssetReq>
+           },
+           {
+            path:'custom',
+            element:<CastomAsset></CastomAsset>
+            
            }
     ]
   }

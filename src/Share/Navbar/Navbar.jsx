@@ -16,6 +16,7 @@ const Navbar = () => {
 
 
         <li><NavLink to={"/hr/home"}>hr</NavLink></li>
+        <li><NavLink to={"/employee/home"}>em</NavLink></li>
     </>
 
 

@@ -8,15 +8,15 @@ const Emnavbar = () => {
     const link = <>
         <li><NavLink to={"/"}>Home</NavLink></li>
 
-        <li><NavLink to={'/hr/assetlist'}>Asset List</NavLink></li>
-        <li><NavLink to={'/hr/add'}>Add an Asset</NavLink></li>
-        <li><NavLink to={'/hr/all'}>
-            AssetList</NavLink></li>
-        <li><NavLink to={'/hr/custom'}>Custom Request</NavLink></li>
-        <li><NavLink to={'/hr/myemployee'}>My Employee</NavLink></li>
-        <li><NavLink to={'/hr/addemployee'}>Add an Employee</NavLink></li>
+        <li><NavLink to={'/employee/assetlist'}> My Asset </NavLink></li>
+        <li><NavLink to={'/employee/myteam'}>My Tame</NavLink></li>
+        <li><NavLink to={'/employee/reqasset'}>Request for Asset</NavLink></li>
+        
+        <li><NavLink to={'/employee/custom'}>Custom Request</NavLink></li>
+        
+        
 
-        <li><NavLink to={"/hr/home"}>hr</NavLink></li>
+        <li><NavLink to={"/employee/home"}>hr</NavLink></li>
     </>
 
 

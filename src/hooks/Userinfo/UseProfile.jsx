@@ -7,17 +7,18 @@ const UseProfile = () => {
 
     const {user}=UserAuth()
     const axiosSecure=useAxiosSequre()
-
+// console.log(user?.email)
    const {refetch,data :info=[]}=useQuery({
     queryKey: ['card',user?.email],
     queryFn:async()=>{
-        const res= await axiosSecure.get(`/user?email=${user.email}`)
+        const res= await axiosSecure.get(`/employee?email=${user?.email}`)
        
         return res.data;
     }
    })
-
+// console.log(info)
    return [info ,refetch]
+   
    
 };
 
