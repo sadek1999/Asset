@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Google from "../../Components/Button/Google";
 import UserAuth from "../../hooks/UserAuth/UserAuth";
 import useAxiosPublc from './../../hooks/axiosPublic/useAxiosPublc';
@@ -7,65 +7,72 @@ import Swal from "sweetalert2";
 
 
 const Login = () => {
+    const navigate=useNavigate()
 
-    const axiosPublic=useAxiosPublc()
-    const {login}=UserAuth()
+    const axiosPublic = useAxiosPublc()
+    const { login } = UserAuth()
     const {
         register,
         handleSubmit,
 
         formState: { errors },
     } = useForm()
-    const onSubmit = (data) =>{ 
+    const onSubmit = (data) => {
         console.log(data)
-        const email=data.email;
-        
-        login(data.email,data.password)
-        .then(res=>{
-            console.log(res)
-            axiosPublic.get(`/employee?email=${email}`)
-            .then(res => {
-                console.log(res.data)
-               
+        const email = data.email;
 
-                // if (res.data[0].hr) {
-                //     console.log('Hr ok')
-                //     singup(email, password)
-                //         .then(res => {
-                //             console.log(res)
-                //             Swal.fire({
-                //                 position: "top-end",
-                //                 icon: "success",
-                //                 title: "Your work has been saved",
-                //                 showConfirmButton: false,
-                //                 timer: 1500
-                //             });
-                //             // navgait('/employee/home')
-                //         })
-                //         .catch(error => {
-                //             console.log(error)
-                //         })
-                // }
-               
+        login(data.email, data.password)
+            .then(res => {
+                console.log(res)
+                axiosPublic.get(`/employee?email=${email}`)
+                    .then(res => {
+                        console.log(res.data)
+
+                        console.log(res.data[0].role)
+                        if(res.data[0].role==='hr'){
+                                  navigate('/hr/home')
+                        }
+                        if(res.data[0].role==='employee'){
+                            navigate('/employee/home')
+                        }
+                        // if (res.data[0].hr) {
+                        //     console.log('Hr ok')
+                        //     singup(email, password)
+                        //         .then(res => {
+                        //             console.log(res)
+                        //             Swal.fire({
+                        //                 position: "top-end",
+                        //                 icon: "success",
+                        //                 title: "Your work has been saved",
+                        //                 showConfirmButton: false,
+                        //                 timer: 1500
+                        //             });
+                        //             // navgait('/employee/home')
+                        //         })
+                        //         .catch(error => {
+                        //             console.log(error)
+                        //         })
+                        // }
+
+                    })
             })
-        })
-    
+
     }
 
-   
+
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="text-center w-1/2 lg:text-left">
-                        
+
                         <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                     </div>
                     <div className="card shrink-0 w-1/2 p-10 max-w-md shadow-2xl bg-base-100">
                         <h1 className="text-center font-bold text-3xl uppercase">login now </h1>
-                    <form onSubmit={handleSubmit(onSubmit)} className="card-body ">
-                            
-                            
+                        <form onSubmit={handleSubmit(onSubmit)} className="card-body ">
+
+
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -111,7 +118,7 @@ const Login = () => {
                 </div>
             </div>
 
-           
+
         </div>
     );
 };

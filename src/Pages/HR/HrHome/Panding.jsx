@@ -36,10 +36,19 @@ const Pending = () => {
         .then(res=>{
             console.log(res.data)
             if(res.data.acknowledged){
-                // axiosSequre.put(`/asset/${id}`,{amout:quantity})
-                // .then(res=>{
-                //     console.log(res.data)
-                // })
+                axiosSequre.put(`/asset/${id}`,{amout:quantity})
+                .then(res=>{
+                    if(res.data.acknowledged){
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Your work has been saved",
+                            showConfirmButton: false,
+                            timer: 1000
+                          });
+                          refetch()
+                    }
+                })
 
                 refetch()
             }
