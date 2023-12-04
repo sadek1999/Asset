@@ -2,10 +2,13 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import Google from "../../Components/Button/Google";
 import UserAuth from "../../hooks/UserAuth/UserAuth";
+import useAxiosPublc from './../../hooks/axiosPublic/useAxiosPublc';
+import Swal from "sweetalert2";
 
 
 const Login = () => {
 
+    const axiosPublic=useAxiosPublc()
     const {login}=UserAuth()
     const {
         register,
@@ -15,9 +18,36 @@ const Login = () => {
     } = useForm()
     const onSubmit = (data) =>{ 
         console.log(data)
+        const email=data.email;
+        
         login(data.email,data.password)
         .then(res=>{
             console.log(res)
+            axiosPublic.get(`/employee?email=${email}`)
+            .then(res => {
+                console.log(res.data)
+               
+
+                // if (res.data[0].hr) {
+                //     console.log('Hr ok')
+                //     singup(email, password)
+                //         .then(res => {
+                //             console.log(res)
+                //             Swal.fire({
+                //                 position: "top-end",
+                //                 icon: "success",
+                //                 title: "Your work has been saved",
+                //                 showConfirmButton: false,
+                //                 timer: 1500
+                //             });
+                //             // navgait('/employee/home')
+                //         })
+                //         .catch(error => {
+                //             console.log(error)
+                //         })
+                // }
+               
+            })
         })
     
     }

@@ -9,6 +9,7 @@ const Hrnavbar = () => {
 
     const { user ,logout} = UserAuth();
     const [info]=UseProfile()
+    console.log(info)
    
 
 

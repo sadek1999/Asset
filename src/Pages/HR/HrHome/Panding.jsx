@@ -30,11 +30,18 @@ const Pending = () => {
 
     const handlApproved=( id,quantity)=>{
         console.log(id, quantity)
+
+        
         axiosSequre.put(`/request/${id}`,{do:'approved'})
         .then(res=>{
             console.log(res.data)
             if(res.data.acknowledged){
-                
+                // axiosSequre.put(`/asset/${id}`,{amout:quantity})
+                // .then(res=>{
+                //     console.log(res.data)
+                // })
+
+                refetch()
             }
         })
     }
