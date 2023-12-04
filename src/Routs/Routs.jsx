@@ -20,6 +20,11 @@ import Emlayout from "../Pages/Empolyee/emlayout/Emlayout";
 import EmHome from "../Pages/Empolyee/emhome/Home/EmHome";
 import AssetReq from "../Pages/Empolyee/page/AssetRe/AssetReq";
 import CastomAsset from "../Pages/Empolyee/page/AssetRe/CastomAsset";
+import Hrrout from './PrivateRout/Hrrout';
+import Emrout from './PrivateRout/Emrout';
+import Myteam from "../Pages/Empolyee/emhome/Home/Myasset/Myteam";
+import Myasset from "../Pages/Empolyee/emhome/Home/Myasset/Myasset";
+
 
 
 const router = createBrowserRouter([
@@ -54,23 +59,23 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'home',
-        element: <Hrhome></Hrhome>
+        element: <Hrrout>  <Hrhome></Hrhome> </Hrrout>
       }, {
         path: 'add',
-        element: <Addasset></Addasset>
+        element:<Hrrout> <Addasset></Addasset></Hrrout> 
       }, {
         path: 'all',
-        element: <Allassets></Allassets>
+        element: <Hrrout><Allassets></Allassets></Hrrout>
       }, {
         path: 'myemployee',
-        element: <MyEmaployee></MyEmaployee>
+        element:<Hrrout> <MyEmaployee></MyEmaployee></Hrrout>
 
       }, {
         path: 'addemployee',
-        element: <Addemployee></Addemployee>
+        element: <Hrrout><Addemployee></Addemployee></Hrrout>
       }, {
         path: 'custom',
-        element: <Custom></Custom>
+        element: <Hrrout><Custom></Custom></Hrrout>
       }
     ]
   },
@@ -80,16 +85,22 @@ const router = createBrowserRouter([
     children: [
            {
             path:'home',
-            element:<EmHome></EmHome>
+            element: <Emrout><EmHome></EmHome></Emrout> 
            },
            {
             path:'reqasset',
-            element:<AssetReq></AssetReq>
+            element:<Emrout><AssetReq></AssetReq></Emrout>
            },
            {
             path:'custom',
-            element:<CastomAsset></CastomAsset>
+            element:<Emrout><CastomAsset></CastomAsset></Emrout>
             
+           },{
+            path:'myteam',
+            element:<Myteam></Myteam>
+           },{
+            path:'myasset',
+            element:<Myasset></Myasset>
            }
     ]
   }

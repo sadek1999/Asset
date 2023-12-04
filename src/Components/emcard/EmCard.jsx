@@ -3,10 +3,23 @@ import Swal from 'sweetalert2';
 import useAxiosSequre from '../../hooks/axiosPublic/useAxiosSequre';
 
 import UseProfile from '../../hooks/Userinfo/UseProfile';
+import { useState } from 'react';
+
+import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
+
+
+
 
 const EmCard = ({item}) => {
     const [info]=UseProfile()
     const axiosSecure = useAxiosSequre()
+
+    
+    const [startDate, setStartDate] = useState(new Date());
+
+// console.log(date)
+
     const { name, photo, quantity, type,_id } = item;
 
     
@@ -19,19 +32,29 @@ const EmCard = ({item}) => {
         
         const email=info[0].email;
         const reqname=info[0].name;
+        const reqphoto=info[0].photo;
         const prod={
             reqname,
+            reqphoto,
+            proid:_id,
             email: email,
             name:name,
             photo:photo,
             type:type,
             quantity:q,
+            date:startDate,
             state:'pending'
         }
 
         axiosSecure.post(`/request`,prod)
         .then(res=>{
-            console.log(res.data)
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 700
+              });
         })
 
         console.log(prod)
@@ -70,6 +93,7 @@ const EmCard = ({item}) => {
 
     return (
         <div className="card card-compact  bg-base-100 shadow-xl">
+           
         <figure ><img className="h-24 w-40" src={photo} alt="Shoes" /></figure>
         <div className="card-body text-center">
             <h2 className="text-3xl">{name}</h2>
@@ -92,6 +116,7 @@ const EmCard = ({item}) => {
                 
                
             </div>
+            <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
         </div>
     </div>
 

@@ -28,7 +28,7 @@ const Pending = () => {
 
     }
 
-    const handlApproved=( id,quantity)=>{
+    const handlApproved=( id,quantity,pid)=>{
         console.log(id, quantity)
 
         
@@ -36,7 +36,7 @@ const Pending = () => {
         .then(res=>{
             console.log(res.data)
             if(res.data.acknowledged){
-                axiosSequre.put(`/asset/${id}`,{amout:quantity})
+                axiosSequre.put(`/asset/${pid}`,{amout:quantity})
                 .then(res=>{
                     if(res.data.acknowledged){
                         Swal.fire({
@@ -81,7 +81,7 @@ const Pending = () => {
                                     <div className="flex items-center gap-3">
                                         <div className="avatar">
                                             <div className="mask mask-squircle w-12 h-12">
-                                                <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                                                <img src={req.reqphoto} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
                                         <div>
@@ -95,7 +95,7 @@ const Pending = () => {
                                 </td>
                                 <td className="text-xl">{req.quantity}</td>
                                 <th>
-                                    <button onClick={()=>{handlApproved(req._id,req.quantity)}} className="btn bg-green-400 btn-xs">Approved</button>
+                                    <button onClick={()=>{handlApproved(req._id,req.quantity,req.proid)}} className="btn bg-green-400 btn-xs">Approved</button>
                                 </th>
                                 <th>
                                     <button onClick={()=>{handlreject(req._id)}} className="btn bg-red-400 btn-xs">Reject</button>

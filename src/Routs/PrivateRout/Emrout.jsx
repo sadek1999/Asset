@@ -15,7 +15,7 @@ const Emrout = ({ children }) => {
     if (user && info[0]?.role === 'employee') {
         return children;
     }
-    return <Navigate state={location.pathname} to={'/'}></Navigate>
+    return <Navigate state={location.pathname} to={'/login'}></Navigate>
 
 };
 

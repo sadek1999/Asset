@@ -26,33 +26,19 @@ const Login = () => {
                 console.log(res)
                 axiosPublic.get(`/employee?email=${email}`)
                     .then(res => {
-                        console.log(res.data)
+                        // console.log(res?.data)
 
-                        console.log(res.data[0].role)
-                        if(res.data[0].role==='hr'){
+                        // console.log(res?.data[0].role)
+                        const r=res?.data[0].role;
+                        console.log(r)
+                        if(r==='hr'){
                                   navigate('/hr/home')
                         }
-                        if(res.data[0].role==='employee'){
+                        if(r==='employee'){
+
                             navigate('/employee/home')
                         }
-                        // if (res.data[0].hr) {
-                        //     console.log('Hr ok')
-                        //     singup(email, password)
-                        //         .then(res => {
-                        //             console.log(res)
-                        //             Swal.fire({
-                        //                 position: "top-end",
-                        //                 icon: "success",
-                        //                 title: "Your work has been saved",
-                        //                 showConfirmButton: false,
-                        //                 timer: 1500
-                        //             });
-                        //             // navgait('/employee/home')
-                        //         })
-                        //         .catch(error => {
-                        //             console.log(error)
-                        //         })
-                        // }
+                      
 
                     })
             })
@@ -64,9 +50,18 @@ const Login = () => {
         <div>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row">
-                    <div className="text-center w-1/2 lg:text-left">
+                    <div className="text-center w-1/2 space-y-2 lg:text-left">
+                     <h1 className="text-xl text-red-400"> Pleas give sum time navigate to home page if not work try again </h1>
+                       <p>Hr email: <span className="text-xl font-bold">khan@gmail.com</span>  and password :<span className="text-xl font-bold">123456Kk</span></p>
 
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+
+                       {/* <p>employee email: <span className="text-xl font-bold">robi@gmail.com</span>  and password :<span className="text-xl font-bold">123456Rr</span></p> */}
+
+                       <p>employee email: <span className="text-xl font-bold">sadek@gmail.com</span>  and password :<span className="text-xl font-bold">123456Ss</span></p>
+                       <p>employee email: <span className="text-xl font-bold">ali@gmail.com</span>  and password :<span className="text-xl font-bold">123456Aa</span></p>
+
+
+                       
                     </div>
                     <div className="card shrink-0 w-1/2 p-10 max-w-md shadow-2xl bg-base-100">
                         <h1 className="text-center font-bold text-3xl uppercase">login now </h1>

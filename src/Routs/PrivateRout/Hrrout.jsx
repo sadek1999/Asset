@@ -15,7 +15,7 @@ const location=useLocation()
     if(user && info[0]?.role==='hr'){
         return children ;
     }
-    return <Navigate state={location.pathname} to={'/'}></Navigate>
+    return <Navigate state={location.pathname} to={'/login'}></Navigate>
 
 };
 

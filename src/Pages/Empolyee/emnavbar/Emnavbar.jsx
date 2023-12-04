@@ -1,9 +1,28 @@
 import  { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import UserAuth from '../../../hooks/UserAuth/UserAuth';
+import UseProfile from '../../../hooks/Userinfo/UseProfile';
+import Swal from 'sweetalert2';
 
 const Emnavbar = () => {
+    const { user ,logout} = UserAuth();
+    const [info]=UseProfile()
 
     const [theme, settheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light')
+      
+    const handllogout=()=>{
+        logout()
+        .then(res=>{
+         Swal.fire({
+             position: "top-end",
+             icon: "success",
+             title: "Your work has been saved",
+             showConfirmButton: false,
+             timer: 1500
+           });
+        })
+  }
+
 
     const link = <>
         <li><NavLink to={"/"}>Home</NavLink></li>
@@ -71,7 +90,29 @@ const Emnavbar = () => {
 
                     </label>
 
-                    <a className="btn">Button</a>
+                    <div className="mr-2">
+                            {
+                                user?.email ? <div className="dropdown  dropdown-end">
+                                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                        <div className="w-10 rounded-full">
+                                            {
+                                                info[0]?.photo? <img alt="Tailwind CSS Navbar component" src={info[0].photo} />: <img alt="Tailwind CSS Navbar component" src="" />
+                                            }
+                                            
+                                        </div>
+                                    </div>
+                                    <ul className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 text-blue-300 rounded-box w-52">
+                                        <li>
+                                            {info[0]?.name}
+                                        </li>
+                                        <li>{info[0]?.email}</li>
+                                        <li> <button onClick={handllogout}>Log out</button></li>
+                                    </ul>
+                                </div> :
+                                    <Link to={'/login'}>Log in</Link>
+
+                            }
+                        </div>
                 </div>
             </div>
         </nav>

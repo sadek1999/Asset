@@ -7,7 +7,7 @@ const EmNave = () => {
             <ul>
                 <li><NavLink to={"/"}>Home</NavLink></li>
 
-                <li><NavLink to={'/employee/assetlist'}> My Asset </NavLink></li>
+                <li><NavLink to={'/employee/myasset'}> My Asset </NavLink></li>
                 <li><NavLink to={'/employee/myteam'}>My Tame</NavLink></li>
                 <li><NavLink to={'/employee/reqasset'}>Request for Asset</NavLink></li>
 

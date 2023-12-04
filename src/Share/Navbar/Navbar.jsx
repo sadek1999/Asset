@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const Navbar = () => {
     const [theme, settheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light')
     const { user,logout  } = UserAuth()
-    console.log(user)
+    // console.log(user)
     
     const link = <>
         <li><NavLink to={"/"}>Home</NavLink></li>
@@ -15,8 +15,8 @@ const Navbar = () => {
         <li><NavLink to={"/hrsingup"}>Join As HR</NavLink></li>
 
 
-        <li><NavLink to={"/hr/home"}>hr</NavLink></li>
-        <li><NavLink to={"/employee/home"}>em</NavLink></li>
+        <li><NavLink to={"/hr/home"}>HR home</NavLink></li>
+        <li><NavLink to={"/employee/home"}>Employee Home</NavLink></li>
     </>
 
 

@@ -20,7 +20,7 @@ const Hrnavbar = () => {
     const link = <>
         <li><NavLink to={"/"}>Home</NavLink></li>
 
-        <li><NavLink to={'/hr/assetlist'}>Asset List</NavLink></li>
+        {/* <li><NavLink to={'/hr/assetlist'}>Asset List</NavLink></li> */}
         <li><NavLink to={'/hr/add'}>Add an Asset</NavLink></li>
         <li><NavLink to={'/hr/all'}>
             AssetList</NavLink></li>

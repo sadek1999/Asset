@@ -47,6 +47,7 @@ const Hr = () => {
        .then(res=>{
        if(res){
 
+        console.log(res)
         axiospublic.post('/employee',info)
         .then(res=>{console.log(res.data)})
         navigate('/hr')
